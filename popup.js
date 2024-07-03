@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
             target: { tabId: tabs[0].id },
             func: function() {
                 const profiles = [];
-                document.querySelectorAll('.reusable-search__entity-result-list .reusable-search__result-container, .update-components-actor__container').forEach(container => {
+                document.querySelectorAll('.reusable-search__entity-result-list .reusable-search__result-container, .update-components-actor__container, .org-people-profile-card' ).forEach(container => {
                     let nameElement, profileUrl, avatarElement, avatarUrl, primarySubtitleElement, primarySubtitle, secondarySubtitleElement, secondarySubtitle, badgeElement, badge, summaryElement, summary, servicesElement, services, requestServicesElement, requestServicesUrl;
 
-                    // Handle old format
+                    // Handle LinkedIn Feed format
                     if (container.classList.contains('reusable-search__result-container')) {
                         nameElement = container.querySelector('.entity-result__title-text a span[aria-hidden="true"]');
                         profileUrl = nameElement ? nameElement.closest('a').href : null;
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         requestServicesUrl = requestServicesElement ? requestServicesElement.href : null;
                     }
 
-                    // Handle new format
+                    // Handle LinkedIn search results format
                     if (container.classList.contains('update-components-actor__container')) {
                         nameElement = container.querySelector('.update-components-actor__name span[aria-hidden="true"]');
                         profileUrl = container.querySelector('.app-aware-link').href;
@@ -48,8 +48,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         requestServicesUrl = null; // No request services URL in new format
                     }
 
+                        // Handle LinkedIn company pages (People tab) format
+                    if (container.classList.contains('org-people-profile-card')) {
+                        nameElement = container.querySelector('.org-people-profile-card__profile-title a span[aria-hidden="true"]');
+                        profileUrl = container.querySelector('.app-aware-link').href;
+                        avatarElement = container.querySelector('.evi-image.lazy-image');
+                        avatarUrl = avatarElement ? avatarElement.src : null;
+                        primarySubtitleElement = container.querySelector('.artdeco-entity-lockup__subtitle .lt-line-clamp');
+                        primarySubtitle = primarySubtitleElement ? primarySubtitleElement.textContent.trim() : null;
+                        secondarySubtitleElement = container.querySelector('.artdeco-entity-lockup__degree');
+                        secondarySubtitle = secondarySubtitleElement ? secondarySubtitleElement.textContent.trim() : null;
+                        badgeElement = container.querySelector('.artdeco-entity-lockup__badge');
+                        badge = badgeElement ? badgeElement.textContent.trim() : null;
+                    }
                     // Exclude companies
-                    if (profileUrl && !profileUrl.includes('/company/')) {
+                    if (profileUrl && !profileUrl.includes('/company/') && !profileUrl.includes('/showcase/')) {
                         profiles.push({
                             name: nameElement ? nameElement.textContent.trim() : null,
                             profileUrl,
