@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         nameElement = container.querySelector('.entity-result__title-text a span[aria-hidden="true"]');
                         profileUrl = nameElement ? nameElement.closest('a').href : null;
                         avatarElement = container.querySelector('.presence-entity__image');
-                        avatarUrl = avatarElement ? avatarElement.src : null;
+                        avatarUrl = avatarElement ? avatarElement.src : 'images/icon48.png';
                         primarySubtitleElement = container.querySelector('.entity-result__primary-subtitle');
                         primarySubtitle = primarySubtitleElement ? primarySubtitleElement.textContent.trim() : null;
                         secondarySubtitleElement = container.querySelector('.entity-result__secondary-subtitle');
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         nameElement = container.querySelector('.update-components-actor__name span[aria-hidden="true"]');
                         profileUrl = container.querySelector('.app-aware-link').href;
                         avatarElement = container.querySelector('.ivm-view-attr__img--centered');
-                        avatarUrl = avatarElement ? avatarElement.src : null;
+                        avatarUrl = avatarElement ? avatarElement.src : 'images/icon48.png';
                         primarySubtitleElement = container.querySelector('.update-components-actor__description');
                         primarySubtitle = primarySubtitleElement ? primarySubtitleElement.textContent.trim() : null;
                         secondarySubtitleElement = container.querySelector('.update-components-actor__supplementary-actor-info');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         nameElement = container.querySelector('.org-people-profile-card__profile-title');
                         profileUrl = container.querySelector('.app-aware-link').href;
                         avatarElement = container.querySelector('.evi-image.lazy-image');
-                        avatarUrl = avatarElement ? avatarElement.src : null;
+                        avatarUrl = avatarElement ? avatarElement.src : 'images/icon48.png';
                         primarySubtitleElement = container.querySelector('.artdeco-entity-lockup__subtitle .lt-line-clamp');
                         primarySubtitle = primarySubtitleElement ? primarySubtitleElement.textContent.trim() : null;
                         secondarySubtitleElement = container.querySelector('.artdeco-entity-lockup__degree');
