@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         requestServicesUrl = null; // No request services URL in new format
                     }
 
-                        // Handle LinkedIn company pages (People tab) format
+                    // Handle LinkedIn company pages (People tab) format
                     if (container.classList.contains('org-people-profile-card')) {
-                        nameElement = container.querySelector('.org-people-profile-card__profile-title a span[aria-hidden="true"]');
+                        nameElement = container.querySelector('.org-people-profile-card__profile-title');
                         profileUrl = container.querySelector('.app-aware-link').href;
                         avatarElement = container.querySelector('.evi-image.lazy-image');
                         avatarUrl = avatarElement ? avatarElement.src : null;
